@@ -1,0 +1,25 @@
+app_name: fundtransfer
+package_id: com.fundtransfer.grainite
+jars:
+  - target/fundtransfer-jar-with-dependencies.jar
+
+tables:
+  - table_name: banking_core_account
+    key_type: string
+    action_handlers:
+      - name: AccountHandler
+        type: java
+        class_name: org.samples.userflows.actions.AccountGrainHandler
+        actions:
+          - action_name: updateEvents
+            method_name: handleUpdateEvents
+            subscriptions:
+              - subscription_name: updates
+                topic_key: user_id
+                topic_name: transfer_topic
+
+topics:
+  - topic_name: transfer_topic
+    key_name: user_id
+    key_type: string
+    value_type: json
