@@ -9,7 +9,7 @@ tables:
     action_handlers:
       - name: AccountHandler
         type: java
-        class_name: org.samples.userflows.actions.AccountGrainHandler
+        class_name: com.fundtransfer.grainite.actions.AccountGrainHandler
         actions:
           - action_name: updateEvents
             method_name: handleUpdateEvents
